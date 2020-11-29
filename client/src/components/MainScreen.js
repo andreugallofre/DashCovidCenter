@@ -4,6 +4,7 @@ import { HomeOutlined, ShopOutlined, WechatOutlined, InfoCircleOutlined, Questio
 import './MainScreen.css';
 import { Contact } from './Contact/Contact';
 import { Dashboard } from './Dashboard/Dashboard';
+import Chatbot from './ChatBot/ChatBot';
 
 export class MainScreen extends Component {
 
@@ -57,6 +58,7 @@ export class MainScreen extends Component {
                     { this.state.home ? <Dashboard /> : null }
                     { this.state.contact ? <Contact /> : null }
                 </Layout>
+                <Chatbot />
             </Layout>
         );
     }
