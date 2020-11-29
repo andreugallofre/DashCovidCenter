@@ -23,8 +23,8 @@ class ResponseSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
 
-    responses = ResponseSerializer(many=True, source='response_set')
+    responses = ResponseSerializer(many=True, read_only=True, source='response_set')
 
     class Meta:
         model = Post
-        fields = ('id', 'user', 'content', 'datetime', 'responses')
+        fields = ('id', 'user', 'title', 'content', 'datetime', 'responses')
