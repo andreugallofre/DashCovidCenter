@@ -13,13 +13,16 @@ export class Contact extends Component {
                     <Col span={12}>
                         <form name="contact" method="POST" data-netlify="true">
                             <p>
-                                <input type="text" name="name" placeholder="Name (optional)"/>
+                                <input type="text" name="name" placeholder="Name (optional)"/><br/>
+                                <label>Necesitamos tu nombre para referirnos a ti, pero es opcional</label>
                             </p>
                             <p>
-                                <input type="email" name="email" placeholder="Email (optional)"/>
+                                <input type="email" name="email" placeholder="Email" required/><br/>
+                                <label >Necesitamos tu correo electronico para ponernos en contacto contigo</label>
                             </p>
+                                
                             <p>
-                                <textarea name="message" placeholder="Write here your suggestions, either a speaker or topics for future T&W. We are open to everything!" required></textarea>
+                                <textarea name="message" placeholder="Consulta a realizar" required></textarea>
                             </p>
                             <p>
                                 <button type="submit" class="form-button">Enviar</button>
