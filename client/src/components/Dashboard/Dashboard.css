@@ -1,0 +1,64 @@
+
+.dash-card {
+    display: flex;
+    flex-direction: row;
+    max-width: 30em;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.dash-card > div {
+    padding: 1em;
+}
+
+.dash-card > .first {
+    width: 10em;
+}
+.container {
+    padding: 2em;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: auto;
+    flex-wrap: wrap;
+}
+
+.content {
+    margin-top: 3em;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.content .into {
+    background-color: white !important;
+    max-width: 100em;
+    padding: 2em;
+}
+
+.divider {
+    border-left: 1px solid;
+}
+
+.title {
+    margin-top: 0.5em !important;
+}
+
+.blue-card {
+    border:  0.1em solid;
+    border-color: #096dd9 !important;
+}
+
+.grey-card {
+    border:  0.1em solid;
+    border-color: #434343 !important;
+}
+
+.green-card {
+    border:  0.1em solid;
+    border-color: #52c41a !important;
+}
