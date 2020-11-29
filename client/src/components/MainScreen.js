@@ -5,6 +5,7 @@ import './MainScreen.css';
 import { Contact } from './Contact/Contact';
 import { Dashboard } from './Dashboard/Dashboard';
 import Chatbot from './ChatBot/ChatBot';
+import { Foro } from './Foro/Foro';
 
 export class MainScreen extends Component {
 
@@ -50,12 +51,15 @@ export class MainScreen extends Component {
                     <Menu.Item key="0" onClick={()=> window.open("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/situacionActual.htm", "_blank")}> Ministerio de Sanidad </Menu.Item>
                     {/* <Menu.Item key="2" onClick={this.toTest} icon={<ShopOutlined />}> Centro de Pruebas </Menu.Item> */}
                     <Menu.Item key="3" onClick={this.toForo} icon={<WechatOutlined />}> Foro </Menu.Item>
-                    <Menu.Item key="4" onClick={this.toFaqs} icon={<InfoCircleOutlined />}> Preguntas Frequentes </Menu.Item>
+                    {/* <Menu.Item key="4" onClick={this.toFaqs} icon={<InfoCircleOutlined />}> Preguntas Frequentes </Menu.Item> */}
                     <Menu.Item key="5" onClick={this.toContact} icon={<QuestionCircleOutlined />}> Contact </Menu.Item>
+                    <Menu.Item key="0" onClick={()=> window.open("https://play.google.com/store/apps/details?id=es.gob.radarcovid&hl=en_US&gl=US", "_blank")}> Radar COVID Android </Menu.Item>
+                    <Menu.Item key="0" onClick={()=> window.open("https://apps.apple.com/es/app/radar-covid/id1520443509", "_blank")}> Radar COVID iOS </Menu.Item>
                 </Menu>
 
                 <Layout className="main-component">
                     { this.state.home ? <Dashboard /> : null }
+                    { this.state.foro ? <Foro /> : null }
                     { this.state.contact ? <Contact /> : null }
                 </Layout>
                 <Chatbot />
