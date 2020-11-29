@@ -18,15 +18,19 @@ const process = async (req) => {
 
 
 const build = async (responses) => {
-    return {
-        fulfillmentMessages: [
-            {
-                text: {
-                    text: [responses]
-                }
-            }
-        ]
+    result = {
+        fulfillmentText: 'Text response',
+        fulfillmentMessages: [],
+        source: 'webhook.sample'
     }
+    for(var r of responses) {
+        result.fulfillmentMessages.push({
+            text: {
+                text: [r]
+            }
+        })
+    }
+    return result
 }
 
 module.exports = {
