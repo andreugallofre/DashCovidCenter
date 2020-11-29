@@ -1,172 +1,61 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Fab from '@material-ui/core/Fab'
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import { LocalHospital, ContactMail, Forum, Launch, Favorite, Home, LiveHelp, Menu, ChatBubble } from '@material-ui/icons';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React, {Component} from 'react';
+import { Layout, Menu } from 'antd';
+import { HomeOutlined, ShopOutlined, WechatOutlined, InfoCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import './MainScreen.css';
+import { Contact } from './Contact/Contact';
 
-const drawerWidth = 240;
+export class MainScreen extends Component {
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
+    constructor(props) {
+        super(props);
+        this.state = { 
+          home: true, 
+          tests: false, 
+          foro: false, 
+          faqs: false, 
+          contact: false,
+          current: '1'
+        };
+    };
 
-function MainScreen(props) {
-  const { window } = props;
-  const classes = useStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+    toHome = () => {
+        this.setState({ home: true, tests: false, foro: false, faqs: false, contact: false, current: '1' })             
+    };
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    toTest = () => {
+        this.setState({ home: false, tests: true, foro: false, faqs: false, contact: false, current: '2' })             
+    };
 
-  const drawer = (
-    <div>
-      <div className={classes.toolbar} />
-      <Divider />
-      <List>
-        <ListItem button key="home">
-          <ListItemIcon><Home/></ListItemIcon>
-          <ListItemText primary="Inicio" />
-        </ListItem>
-        <a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/situacionActual.htm" target="_blank">
-          <ListItem button key="ministerio-salud">
-            <ListItemIcon><Favorite/></ListItemIcon>
-            <ListItemText primary="Ministerio de Salud" />
-            <ListItemIcon><Launch/></ListItemIcon>
-          </ListItem>
-        </a>
-        <ListItem button key="centro-pruebas">
-          <ListItemIcon><LocalHospital/></ListItemIcon>
-          <ListItemText primary="Centro de Pruebas" />
-        </ListItem>
-        <ListItem button key="foro">
-          <ListItemIcon><Forum/></ListItemIcon>
-          <ListItemText primary="Foro" />
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem button key="faqs">
-          <ListItemIcon><LiveHelp/></ListItemIcon>
-          <ListItemText primary="Preguntas Frequentes" />
-        </ListItem>
-        <ListItem button key="contact">
-          <ListItemIcon><ContactMail/></ListItemIcon>
-          <ListItemText primary="Contacto" />
-        </ListItem>
-      </List>
-    </div>
-  );
+    toForo = () => {
+        this.setState({ home: false, tests: false, foro: true, faqs: false, contact: false, current: '3' })             
+    };
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+    toFaqs = () => {
+        this.setState({ home: false, tests: false, foro: false, faqs: true, contact: false, current: '4' })             
+    };
 
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <Menu />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            DashCovid Center
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Hidden smUp implementation="css">
-          <Drawer
-            container={container}
-            variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-        <Hidden xsDown implementation="css">
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            variant="permanent"
-            open
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-      </nav>
-      <main className={classes.content}>
-          <Fab aria-label="chatbot" color="blue">
-            <ChatBubble/>
-          </Fab>
-      </main>
-    </div>
-  );
+    toContact = () => {
+        this.setState({ home: false, tests: false, foro: false, faqs: false, contact: true, current: '5' })             
+    };
+
+    render() {
+      const { current } = this.state;
+
+        return (
+            <Layout>
+                <Menu selectedKeys={[current]} mode="horizontal">
+                    <Menu.Item key="1" onClick={this.toHome} icon={<HomeOutlined />}> Inicio </Menu.Item>
+                    <Menu.Item key="0" onClick={()=> window.open("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/situacionActual.htm", "_blank")}> Ministerio de Sanidad </Menu.Item>
+                    <Menu.Item key="2" onClick={this.toTest} icon={<ShopOutlined />}> Centro de Pruebas </Menu.Item>
+                    <Menu.Item key="3" onClick={this.toForo} icon={<WechatOutlined />}> Foro </Menu.Item>
+                    <Menu.Item key="4" onClick={this.toFaqs} icon={<InfoCircleOutlined />}> Preguntas Frequentes </Menu.Item>
+                    <Menu.Item key="5" onClick={this.toContact} icon={<QuestionCircleOutlined />}> Contact </Menu.Item>
+                </Menu>
+
+                <Layout>
+                    { this.state.contact ? <Contact /> : null }
+                </Layout>
+            </Layout>
+        );
+    }
 }
-
-MainScreen.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
-
-export default MainScreen;
