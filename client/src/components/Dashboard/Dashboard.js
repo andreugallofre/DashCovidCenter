@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Typography } from "antd";
 
-import { Card, Divider, Layout } from "antd";
+import { Card, Layout } from "antd";
 import "./Dashboard.css";
-import { Content } from "antd/lib/layout/layout";
 import MenuCiudades from "../Menu/Ciudades";
 const { Title, Text } = Typography;
 export class Dashboard extends Component {

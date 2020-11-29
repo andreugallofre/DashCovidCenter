@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Layout, Menu } from 'antd';
-import { HomeOutlined, ShopOutlined, WechatOutlined, InfoCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { HomeOutlined, WechatOutlined, InfoCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import './MainScreen.css';
 import { Contact } from './Contact/Contact';
 import { Dashboard } from './Dashboard/Dashboard';
@@ -54,7 +54,7 @@ export class MainScreen extends Component {
                     <Menu.Item key="5" onClick={this.toContact} icon={<QuestionCircleOutlined />}> Contact </Menu.Item>
                 </Menu>
 
-                <Layout>
+                <Layout className="main-component">
                     { this.state.home ? <Dashboard /> : null }
                     { this.state.contact ? <Contact /> : null }
                 </Layout>
