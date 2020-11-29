@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Layout, Menu } from 'antd';
-import { HomeOutlined, WechatOutlined, InfoCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { HomeOutlined, WechatOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import './MainScreen.css';
 import { Contact } from './Contact/Contact';
 import { Dashboard } from './Dashboard/Dashboard';
