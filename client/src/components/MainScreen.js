@@ -4,17 +4,17 @@ import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
-import Fab from '@material-ui/core/Fab'
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { LocalHospital, ContactMail, Forum, Launch, Favorite, Home, LiveHelp, Menu, ChatBubble } from '@material-ui/icons';
+import { LocalHospital, ContactMail, Forum, Launch, Favorite, Home, LiveHelp, Menu } from '@material-ui/icons';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Chatbot from './ChatBot/ChatBot';
 
 const drawerWidth = 240;
 
@@ -49,6 +49,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  floatingButton: {
+    display: 'fixed',
+    position: 'absolute',
+    bottom: '2em',
+    right: '2em'
+  }
 }));
 
 function MainScreen(props) {
@@ -56,7 +62,6 @@ function MainScreen(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -153,10 +158,8 @@ function MainScreen(props) {
         </Hidden>
       </nav>
       <main className={classes.content}>
-          <Fab aria-label="chatbot" color="blue">
-            <ChatBubble/>
-          </Fab>
       </main>
+      <Chatbot />
     </div>
   );
 }
