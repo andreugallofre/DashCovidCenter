@@ -1,11 +1,34 @@
-
 const estadisticas = require("./estadisticas.js")
+const colegios = require("./colegios.js")
 
-export const process = async (req) => {
-    const intent = req.intent.displayName
+const process = async (req) => {
+    const intent = req.queryResult.intent.displayName
+    let responses
     switch(intent) {
-        case 'estadisticas':
-            estadisticas(req)
+        case 'Estadisticas':
+            responses = await estadisticas.run(req)
+            break
+        case 'Colegios':
+            responses = await colegios.run(req)
             break
     }
+    return build(responses)
+
+}
+
+
+const build = async (responses) => {
+    return {
+        fulfillmentMessages: [
+            {
+                text: {
+                    text: [responses]
+                }
+            }
+        ]
+    }
+}
+
+module.exports = {
+    process
 }

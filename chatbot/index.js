@@ -1,6 +1,7 @@
 // Require express and body-parser
 const express = require("express")
 const bodyParser = require("body-parser")
+const basicAuth = require('express-basic-auth')
 
 const intent = require("./intents")
 
@@ -9,9 +10,9 @@ const PORT = 3000
 
 app.use(bodyParser.json())
 
-app.post("/hook", (req, res) => {
-  await intent.process(req)
-  res.status(200).end() // Responding is important
+app.post("/intent", async (req, res) => {
+  const response = await intent.process(req.body)
+  res.json(response)
 })
 
 app.use(basicAuth( { authorizer: authF } ))
