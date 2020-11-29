@@ -1,32 +1,34 @@
 import React, {Component} from 'react';
-import { Card, Layout } from 'antd';
+import { Card, Layout, Typography } from 'antd';
 import './Dashboard.css';
+
+const { Title } = Typography;
 export class Dashboard extends Component {
 
     render() {
         return(
             <Layout>
-                <h1>Dashboard</h1>
-                <div>
-                    <Card title="Casos confirmats" bordered={true}>
+                <Title>Dashboard</Title>
+                <div class="row-cards">
+                    <Card title="Casos confirmats" bordered={true} className="card-size">
                         Card content
                     </Card>
-                    <Card title="Defuncions" bordered={true}>
+                    <Card title="Defuncions" bordered={true} className="card-size">
                         Card content
                     </Card>
-                    <Card title="Altes hospitalaries" bordered={true}>
+                    <Card title="Altes hospitalaries" bordered={true} className="card-size">
                         Card content
                     </Card>
                 </div>
                 <div>
-                    <div>
-                        <Card title="Casos confirmats" bordered={true}>
+                    <div class="row-cards">
+                        <Card title="Casos confirmats" bordered={true} className="card-size">
                             Card content
                         </Card>
-                        <Card title="Defuncions" bordered={true}>
+                        <Card title="Defuncions" bordered={true} className="card-size">
                             Card content
                         </Card>
-                        <Card title="Altes hospitalaries" bordered={true}>
+                        <Card title="Altes hospitalaries" bordered={true} className="card-size">
                             Card content
                         </Card>
                     </div>

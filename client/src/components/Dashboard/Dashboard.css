@@ -1,0 +1,12 @@
+.row-cards {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	align-content: center;
+}
+
+.card-size {
+    width: 300px;
+}

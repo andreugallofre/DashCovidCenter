@@ -53,7 +53,7 @@ export class MainScreen extends Component {
                     <Menu.Item key="5" onClick={this.toContact} icon={<QuestionCircleOutlined />}> Contact </Menu.Item>
                 </Menu>
 
-                <Layout>
+                <Layout className="main-component">
                     { this.state.home ? <Dashboard /> : null }
                     { this.state.contact ? <Contact /> : null }
                 </Layout>
