@@ -3,6 +3,7 @@ import { Layout, Menu } from 'antd';
 import { HomeOutlined, ShopOutlined, WechatOutlined, InfoCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import './MainScreen.css';
 import { Contact } from './Contact/Contact';
+import { Dashboard } from './Dashboard/Dashboard';
 
 export class MainScreen extends Component {
 
@@ -46,13 +47,14 @@ export class MainScreen extends Component {
                 <Menu selectedKeys={[current]} mode="horizontal">
                     <Menu.Item key="1" onClick={this.toHome} icon={<HomeOutlined />}> Inicio </Menu.Item>
                     <Menu.Item key="0" onClick={()=> window.open("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/situacionActual.htm", "_blank")}> Ministerio de Sanidad </Menu.Item>
-                    <Menu.Item key="2" onClick={this.toTest} icon={<ShopOutlined />}> Centro de Pruebas </Menu.Item>
+                    {/* <Menu.Item key="2" onClick={this.toTest} icon={<ShopOutlined />}> Centro de Pruebas </Menu.Item> */}
                     <Menu.Item key="3" onClick={this.toForo} icon={<WechatOutlined />}> Foro </Menu.Item>
                     <Menu.Item key="4" onClick={this.toFaqs} icon={<InfoCircleOutlined />}> Preguntas Frequentes </Menu.Item>
                     <Menu.Item key="5" onClick={this.toContact} icon={<QuestionCircleOutlined />}> Contact </Menu.Item>
                 </Menu>
 
                 <Layout>
+                    { this.state.home ? <Dashboard /> : null }
                     { this.state.contact ? <Contact /> : null }
                 </Layout>
             </Layout>
